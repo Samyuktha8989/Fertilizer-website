@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fertilizer Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="number"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .output {
+            background-color: #eaf7ea;
+            padding: 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .faq, .user-guide, .feedback-section {
+            margin-top: 40px;
+        }
+
+        .faq h2, .user-guide h2, .feedback-section h2 {
+            color: #007bff;
+        }
+
+        .faq p, .user-guide p, .feedback-section p {
+            margin-bottom: 10px;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .feedback-section textarea {
+            height: 100px;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fertilizer Calculator</h1>
+
+        <!-- Fertilizer Form -->
+        <form id="fertilizerForm">
+            <label for="crop">Crop Type:</label>
+            <input type="text" id="crop" name="crop" placeholder="e.g., Corn" required>
+
+            <label for="area">Area (acres):</label>
+            <input type="number" id="area" name="area" placeholder="e.g., 5" required>
+
+            <label for="nValue">Soil Test N Value (Nitrogen):</label>
+            <input type="number" id="nValue" name="nValue" placeholder="e.g., 80" required>
+
+            <label for="pValue">Soil Test P Value (Phosphorus):</label>
+            <input type="number" id="pValue" name="pValue" placeholder="e.g., 40" required>
+
+            <label for="kValue">Soil Test K Value (Potassium):</label>
+            <input type="number" id="kValue" name="kValue" placeholder="e.g., 100" required>
+
+            <label for="fertilizerType">Fertilizer Type (N-P-K):</label>
+            <input type="text" id="fertilizerType" name="fertilizerType" placeholder="e.g., 20-10-10" required>
+
+            <button type="button" onclick="calculateFertilizer()">Calculate</button>
+        </form>
+
+        <div id="output" class="output" style="display:none;">
+            <!-- The calculation result will appear here -->
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq">
+            <h2>FAQ</h2>
+            <div class="faq-question">Q: What does N-P-K stand for?</div>
+            <p>A: N-P-K represents the percentage of nitrogen (N), phosphorus (P), and potassium (K) in the fertilizer.</p>
+
+            <div class="faq-question">Q: How accurate is this calculator?</div>
+            <p>A: This calculator provides an estimation based on general guidelines for fertilizer application. It is recommended to consult with a local agronomist for specific recommendations.</p>
+
+            <div class="faq-question">Q: Can I use this calculator for crops other than corn?</div>
+            <p>A: Yes, you can use this calculator for various crops, but the nutrient requirements might vary. Make sure to adjust values accordingly.</p>
+        </div>
+
+        <!-- User Guide Section -->
+        <div class="user-guide">
+            <h2>User Guide</h2>
+            <p><strong>Step 1:</strong> Enter the crop type you're planting. For example, enter "Corn".</p>
+            <p><strong>Step 2:</strong> Specify the size of your farming area in acres. For example, if you have 5 acres, enter 5.</p>
+            <p><strong>Step 3:</strong> Input your soil test results for nitrogen, phosphorus, and potassium. These values are crucial for accurate calculations.</p>
+            <p><strong>Step 4:</strong> Specify the type of fertilizer you're using. Use the N-P-K ratio format, such as 20-10-10.</p>
+            <p><strong>Step 5:</strong> Click "Calculate" to get the required fertilizer amount based on your inputs.</p>
+        </div>
+
+        <!-- Feedback Section -->
+        <div class="feedback-section">
+            <h2>User Feedback</h2>
+            <form>
+                <label for="feedback">Please leave your feedback:</label>
+                <textarea id="feedback" name="feedback" placeholder="Share your experience or suggestions..."></textarea>
+                <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Fertilizer Calculator. All rights reserved.
+    </footer>
+
+    <script>
+        function calculateFertilizer() {
+            const crop = document.getElementById("crop").value;
+            const area = parseFloat(document.getElementById("area").value);
+            const nValue = parseFloat(document.getElementById("nValue").value);
+            const pValue = parseFloat(document.getElementById("pValue").value);
+            const kValue = parseFloat(document.getElementById("kValue").value);
+            const fertilizerType = document.getElementById("fertilizerType").value.split("-");
+
+            const nRequired = 120;
+            const pRequired = 60;
+            const kRequired = 80;
+
+            const nDeficit = (nRequired - nValue) / 0.6;
+            const pDeficit = (pRequired - pValue) / 0.4;
+            const kDeficit = (kRequired - kValue) / 0.8;
+
+            const nContent = parseFloat(fertilizerType[0]) / 100;
+            const pContent = parseFloat(fertilizerType[1]) / 100;
+            const kContent = parseFloat(fertilizerType[2]) / 100;
+
+            const pFertilizer = (pDeficit * area) / (pContent * 2.471);
+
+            const output = `
+                For crop: ${crop} and area: ${area} acres,
+                use ${pFertilizer.toFixed(2)} kg of Phosphorus Fertilizer.
+            `;
+            
+            document.getElementById("output").innerText = output;
+            document.getElementById("output").style.display = "block";
+        }
+
+        function submitFeedback() {
+            const feedback = document.getElementById("feedback").value;
+            if (feedback.trim() !== "") {
+                alert("Thank you for your feedback!");
+                document.getElementById("feedback").value = "";
+            } else {
+                alert("Please enter your feedback before submitting.");
+            }
+        }
+    </script>
+</body>
+</html>

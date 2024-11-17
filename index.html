@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fertilizer Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 20px;
+            background-image: url('data:image/jpeg;base64,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'); /* Image of crops */
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1e3a56;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"], input[type="number"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .output {
+            background-color: #eaf7ea;
+            padding: 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            margin: 0 15px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .faq, .user-guide, .feedback-section {
+            margin-top: 40px;
+            display: none; /* Initially hidden */
+        }
+
+        .faq h2, .user-guide h2, .feedback-section h2 {
+            color: #007bff;
+        }
+
+        .faq p, .user-guide p, .feedback-section p {
+            margin-bottom: 10px;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .feedback-section textarea {
+            height: 100px;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fertilizer Calculator</h1>
+
+        <!-- Fertilizer Form -->
+        <form id="fertilizerForm">
+            <label for="crop">Crop Type:</label>
+            <input type="text" id="crop" name="crop" placeholder="e.g., Corn" required>
+
+            <label for="area">Area (acres):</label>
+            <input type="number" id="area" name="area" placeholder="e.g., 5" required>
+
+            <label for="nValue">Soil Test N Value (Nitrogen):</label>
+            <input type="number" id="nValue" name="nValue" placeholder="e.g., 80" required>
+
+            <label for="pValue">Soil Test P Value (Phosphorus):</label>
+            <input type="number" id="pValue" name="pValue" placeholder="e.g., 40" required>
+
+            <label for="kValue">Soil Test K Value (Potassium):</label>
+            <input type="number" id="kValue" name="kValue" placeholder="e.g., 100" required>
+
+            <label for="fertilizerType">Fertilizer Type (N-P-K):</label>
+            <input type="text" id="fertilizerType" name="fertilizerType" placeholder="e.g., 20-10-10" required>
+
+            <button type="button" onclick="calculateFertilizer()">Calculate</button>
+        </form>
+
+        <div id="output" class="output" style="display:none;">
+            <!-- The calculation result will appear here -->
+        </div>
+
+        <!-- Hyperlinks for FAQ, User Guide, Feedback -->
+        <div class="links">
+            <a href="javascript:void(0)" onclick="toggleSection('faq')">FAQ</a>
+            <a href="javascript:void(0)" onclick="toggleSection('user-guide')">User Guide</a>
+            <a href="javascript:void(0)" onclick="toggleSection('feedback-section')">Feedback</a>
+        </div>
+
+        <!-- FAQ Section -->
+        <div id="faq" class="faq">
+            <h2>FAQ</h2>
+            <div class="faq-question">Q: What does N-P-K stand for?</div>
+            <p>A: N-P-K represents the percentage of nitrogen (N), phosphorus (P), and potassium (K) in the fertilizer.</p>
+
+            <div class="faq-question">Q: How accurate is this calculator?</div>
+            <p>A: This calculator provides an estimation based on general guidelines for fertilizer application. It is recommended to consult with a local agronomist for specific recommendations.</p>
+
+            <div class="faq-question">Q: Can I use this calculator for crops other than corn?</div>
+            <p>A: Yes, you can use this calculator for various crops, but the nutrient requirements might vary. Make sure to adjust values accordingly.</p>
+        </div>
+
+        <!-- User Guide Section -->
+        <div id="user-guide" class="user-guide">
+            <h2>User Guide</h2>
+            <p><strong>Step 1:</strong> Enter the crop type you're planting. For example, enter "Corn".</p>
+            <p><strong>Step 2:</strong> Specify the size of your farming area in acres. For example, if you have 5 acres, enter 5.</p>
+            <p><strong>Step 3:</strong> Input your soil test results for nitrogen, phosphorus, and potassium. These values are crucial for accurate calculations.</p>
+            <p><strong>Step 4:</strong> Specify the type of fertilizer you're using. Use the N-P-K ratio format, such as 20-10-10.</p>
+            <p><strong>Step 5:</strong> Click "Calculate" to get the required fertilizer amount based on your inputs.</p>
+        </div>
+
+        <!-- Feedback Section -->
+        <div id="feedback-section" class="feedback-section">
+            <h2>User Feedback</h2>
+            <form>
+                <label for="feedback">Please leave your feedback:</label>
+                <textarea id="feedback" name="feedback" placeholder="Share your experience or suggestions..."></textarea>
+                <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Fertilizer Calculator. All rights reserved.
+    </footer>
+
+    <script>
+        function calculateFertilizer() {
+            const crop = document.getElementById("crop").value;
+            const area = parseFloat(document.getElementById("area").value);
+            const nValue = parseFloat(document.getElementById("nValue").value);
+            const pValue = parseFloat(document.getElementById("pValue").value);
+            const kValue = parseFloat(document.getElementById("kValue").value);
+            const fertilizerType = document.getElementById("fertilizerType").value.split("-");
+
+            const nRequired = 120;
+            const pRequired = 60;
+            const kRequired = 80;
+
+            const nDeficit = (nRequired - nValue) / 0.6;
+            const pDeficit = (pRequired - pValue) / 0.4;
+            const kDeficit = (kRequired - kValue) / 0.8;
+
+            const nContent = parseFloat(fertilizerType[0]) / 100;
+            const pContent = parseFloat(fertilizerType[1]) / 100;
+            const kContent = parseFloat(fertilizerType[2]) / 100;
+
+            const pFertilizer = (pDeficit * area) / (pContent * 2.471);
+
+            const output = `
+                For crop: ${crop} and area: ${area} acres,
+                use ${pFertilizer.toFixed(2)} kg of Phosphorus Fertilizer.
+            `;
+            
+            document.getElementById("output").innerText = output;
+            document.getElementById("output").style.display = "block";
+        }
+
+        function submitFeedback() {
+            const feedback = document.getElementById("feedback").value;
+            if (feedback.trim() !== "") {
+                alert("Thank you for your feedback!");
+                document.getElementById("feedback").value = "";
+            } else {
+                alert("Please enter your feedback before submitting.");
+            }
+        }
+
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const allSections = document.querySelectorAll('.faq, .user-guide, .feedback-section');
+            
+            allSections.forEach(s => s.style.display = 'none'); // Hide all sections
+
+            if (section) {
+                section.style.display = 'block'; // Show the clicked section
+            }
+        }
+    </script>
+</body>
+</html>
